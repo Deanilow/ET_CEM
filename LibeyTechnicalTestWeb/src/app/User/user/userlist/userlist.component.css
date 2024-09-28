@@ -1,0 +1,15 @@
+.user-list-container {
+  padding: 2rem;
+}
+
+.card {
+  border-radius: 10px;
+}
+
+.table th, .table td {
+  white-space: nowrap;
+}
+
+.btn {
+  margin: 0 0.5rem;
+}

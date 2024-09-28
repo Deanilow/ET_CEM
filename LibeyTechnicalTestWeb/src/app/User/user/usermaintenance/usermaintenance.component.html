@@ -1,0 +1,168 @@
+<form #userForm="ngForm" style="padding-right: 5%; padding-left: 5%;">
+  <div *ngIf="user" class="card"
+    style="width: 100%;margin-top: 2rem;background-color:#edf2f6;border-radius: 10px; height: 70em;">
+    <div class="card-header"><b>Mantenimiento de usuario</b></div>
+    <div class="card mb-4 mt-4">
+      <ul class="nav">
+        <button type="button" class="btn-toolbar" (click)="Submit(userForm)">
+          <a class="nav-link text-toolbar">
+            <span>
+              <svg width="20" height="17" viewBox="0 0 14 14" fill="none">
+                <path
+                  d="M11.6667 1H2.33333C1.59695 1 1 1.59695 1 2.33333V11.6667C1 12.403 1.59695 13 2.33333 13H11.6667C12.403 13 13 12.403 13 11.6667V2.33333C13 1.59695 12.403 1 11.6667 1Z"
+                  stroke="#38E8C6" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M1 5H13" stroke="#38E8C6" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M5 13V5" stroke="#38E8C6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            Guardar
+          </a>
+        </button>
+        <button type="button" class="btn-toolbar" (click)="Limpiar()">
+          <a class="nav-link text-toolbar">
+            <span>
+              <svg width="20" height="17" viewBox="0 0 14 14" fill="none">
+                <path
+                  d="M11.6667 1H2.33333C1.59695 1 1 1.59695 1 2.33333V11.6667C1 12.403 1.59695 13 2.33333 13H11.6667C12.403 13 13 12.403 13 11.6667V2.33333C13 1.59695 12.403 1 11.6667 1Z"
+                  stroke="#38E8C6" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M1 5H13" stroke="#38E8C6" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M5 13V5" stroke="#38E8C6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            Limpiar
+          </a>
+        </button>
+        <button type="button" class="btn-toolbar" (click)="Volver()">
+          <a class="nav-link text-toolbar">
+            <span>
+              <svg width="20" height="17" viewBox="0 0 14 14" fill="none">
+                <path
+                  d="M11.6667 1H2.33333C1.59695 1 1 1.59695 1 2.33333V11.6667C1 12.403 1.59695 13 2.33333 13H11.6667C12.403 13 13 12.403 13 11.6667V2.33333C13 1.59695 12.403 1 11.6667 1Z"
+                  stroke="#38E8C6" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M1 5H13" stroke="#38E8C6" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M5 13V5" stroke="#38E8C6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            Volver
+          </a>
+        </button>
+      </ul>
+    </div>
+    <div class="card-body">
+      <div class="row pb-2 pr-2">
+        <div class="col-lg-2">Tipo de documento</div>
+        <div class="col-lg-4">
+          <ng-select placeholder="Seleccione" class="ng-select-solid" [(ngModel)]="user.documentTypeId"
+            name="documentTypeId" required>
+            <ng-option *ngFor="let docType of documentTypes" [value]="docType.documentTypeId">
+              {{ docType.documentTypeDescription }}
+            </ng-option>
+          </ng-select>
+        </div>
+        <div class="col-lg-2">Número de documento</div>
+        <div class="col-lg-4">
+          <input type="text" class="form-control form-control-sm" [(ngModel)]="user.documentNumber"
+            name="documentNumber" required="" />
+          <div
+            *ngIf="userForm.controls['documentNumber']?.invalid && (userForm.controls['documentNumber']?.touched || userForm.controls['documentNumber']?.dirty)"
+            class="text-danger">
+            <small>Este campo es obligatorio.</small>
+          </div>
+        </div>
+      </div>
+      <div class="row pb-2">
+        <div class="col-lg-2">Nombre</div>
+        <div class="col-lg-4">
+          <input type="text" class="form-control form-control-sm" [(ngModel)]="user.name" name="name" required="" />
+          <div
+            *ngIf="userForm.controls['name']?.invalid && (userForm.controls['name']?.touched || userForm.controls['name']?.dirty)"
+            class="text-danger">
+            <small>Este campo es obligatorio.</small>
+          </div>
+        </div>
+        <div class="col-lg-2">Apellido Paterno</div>
+        <div class="col-lg-4">
+          <input type="text" class="form-control form-control-sm" [(ngModel)]="user.mothersLastName"
+            name="mothersLastName" required="" />
+          <div
+            *ngIf="userForm.controls['mothersLastName']?.invalid && (userForm.controls['mothersLastName']?.touched || userForm.controls['mothersLastName']?.dirty)"
+            class="text-danger">
+            <small>Este campo es obligatorio.</small>
+          </div>
+        </div>
+      </div>
+      <div class="row pb-2">
+        <div class="col-lg-2">Apellido Materno</div>
+        <div class="col-lg-4">
+          <input type="text" class="form-control form-control-sm" [(ngModel)]="user.fathersLastName"
+            name="motherLastName" required="" />
+          <div
+            *ngIf="userForm.controls['fathersLastName']?.invalid && (userForm.controls['fathersLastName']?.touched || userForm.controls['fathersLastName']?.dirty)"
+            class="text-danger">
+            <small>Este campo es obligatorio.</small>
+          </div>
+        </div>
+        <div class="col-lg-2">Dirección</div>
+        <div class="col-lg-4">
+          <input type="text" class="form-control form-control-sm" [(ngModel)]="user.address" name="address" />
+        </div>
+      </div>
+      <div class="row pb-2">
+        <div class="col-lg-2">Departamento</div>
+        <div class="col-lg-4">
+          <ng-select placeholder="Seleccione" class="ng-select-solid"
+          (change)="onRegionChange($event)" [(ngModel)]="user.regionCode" name="regionCode">
+            <ng-option *ngFor="let region of region" [value]="region.regionCode">
+              {{ region.regionDescription }}
+            </ng-option>
+          </ng-select>
+        </div>
+        <div class="col-lg-2">Provincia</div>
+        <div class="col-lg-4">
+          <ng-select placeholder="Seleccione" class="ng-select-solid"
+          (change)="onProvinciaChange($event)" [(ngModel)]="user.provinceCode" name="provinceCode">
+            <ng-option *ngFor="let province of province" [value]="province.provinceCode">
+              {{ province.provinceDescription }}
+            </ng-option>
+          </ng-select>
+        </div>
+      </div>
+      <div class="row pb-2">
+        <div class="col-lg-2">Distrito</div>
+        <div class="col-lg-4">
+          <ng-select placeholder="Seleccione" class="ng-select-solid" [(ngModel)]="user.ubigeoCode" name="ubigeoCode">
+            <ng-option *ngFor="let ubigeo of ubigeo" [value]="ubigeo.ubigeoCode"  >
+              {{ ubigeo.ubigeoDescription }}
+            </ng-option>
+          </ng-select>
+        </div>
+        <div class="col-lg-2">Teléfono</div>
+        <div class="col-lg-4">
+          <input type="text" class="form-control form-control-sm" [(ngModel)]="user.phone" name="phone" />
+        </div>
+      </div>
+      <div class="row pb-2">
+        <div class="col-lg-2">Correo</div>
+        <div class="col-lg-4">
+          <input type="email" class="form-control form-control-sm" [(ngModel)]="user.email" name="email" required="" />
+          <div
+            *ngIf="userForm.controls['email']?.invalid && (userForm.controls['email']?.touched || userForm.controls['email']?.dirty)"
+            class="text-danger">
+            <small>Este campo es obligatorio.</small>
+          </div>
+        </div>
+        <div class="col-lg-2">Contraseña</div>
+        <div class="col-lg-4">
+          <input type="password" class="form-control form-control-sm" [(ngModel)]="user.password" name="password"
+            required="" />
+          <div
+            *ngIf="userForm.controls['password']?.invalid && (userForm.controls['password']?.touched || userForm.controls['password']?.dirty)"
+            class="text-danger">
+            <small>Este campo es obligatorio.</small>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
