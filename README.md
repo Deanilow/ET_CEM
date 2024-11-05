@@ -1,7 +1,7 @@
 # **Libey - Enazul - Test**
 
 **Prueba tecnica**
-- El tiempo estimado de la prueba para el puesto de FullStack Junior sera de 3horas, podra tomar mas tiempo del estimado, pero se comparara el tiempo invertido adicional con el resultado de la prueba.
+- El tiempo estimado de la prueba para el puesto de FullStack, podra tomar mas tiempo del estimado, pero se comparara el tiempo invertido adicional con el resultado de la prueba.
 - El motivo de la prueba sera realizar un CRUD de la tabla LibeyUser, asi como una pantalla que sirva de lista y busqueda, ademas debera cargar informacion para cada choice requerido.
 - Tanto el usuario como la cadena de conexion se encuentran en el API.
 - Al finalizar la prueba se crear una rama con el nombre del postulante para su revision.
